@@ -1,17 +1,19 @@
 import "./Login.css";
+import { useState } from "react";
 // import key from "./Authentication";
 // import submitData from "./Authentication";
 
-let isLoggedIn = "Not Login";
-console.log("Login status = ", isLoggedIn);
-
-const submitData = () => {
-  // alert("Key = " + key);
-  isLoggedIn = "Login successfull";
-  console.log("Login status = ", isLoggedIn);
-};
+// let isLoggedIn = "Not Login";
+// console.log("Login status = ", isLoggedIn);
 
 export default function Login() {
+  const [loginStatus, isLoggedIn] = useState("Not Logged In");
+  console.log("Login status = ", loginStatus);
+  const submitData = () => {
+    isLoggedIn("Logged in");
+    console.log("Login status = ", loginStatus);
+  };
+
   return (
     <>
       <div className="box-cont">
@@ -28,7 +30,7 @@ export default function Login() {
             <button type="button" onClick={submitData}>
               Login
             </button>
-            {/* <span>Is Logged In : {isLoggedIn}</span> */}
+            <span>Is Logged In : {loginStatus}</span>
           </form>
         </div>
       </div>
