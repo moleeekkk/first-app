@@ -2,27 +2,9 @@ import "./Sevices.css";
 import { useState } from "react";
 
 export function Services() {
-  const [quantity, setQuantity] = useState(10);
-  const [cart, setCart] = useState(0);
   return (
     <>
-      <div
-        className="cart"
-        style={{ width: "50%", backgroundColor: "#a48484" }}
-      >
-        <h1>Cart = {cart}</h1>
-        {/* <img src="../assets/Kankariya_Football.jpg" alt="Cart" /> */}
-        <h1>Quantity : {quantity}</h1>
-        <button
-          onClick={() => {
-            setQuantity(quantity - 1);
-            setCart(cart + 1);
-          }}
-        >
-          Add to cart
-        </button>
-      </div>
-
+      <Cart />
       <section className="services">
         <div className="section-title">
           <h2>Our Services</h2>
@@ -86,6 +68,31 @@ export function Services() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+
+function Cart() {
+  const [quantity, setQuantity] = useState(10);
+  const [cart, setCart] = useState(0);
+  return (
+    <>
+      <div
+        className="cart"
+        style={{ width: "50%", backgroundColor: "#a48484" }}
+      >
+        <h1>Cart = {cart}</h1>
+        {/* <img src="../assets/Kankariya_Football.jpg" alt="Cart" /> */}
+        <h1>Quantity : {quantity}</h1>
+        <button
+          onClick={() => {
+            setQuantity(quantity - 1);
+            setCart(cart + 1);
+          }}
+        >
+          Add to cart
+        </button>
+      </div>
     </>
   );
 }
