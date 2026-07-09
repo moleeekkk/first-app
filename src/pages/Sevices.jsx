@@ -1,5 +1,6 @@
 import "./Sevices.css";
 import { useState } from "react";
+import Product from "../assets/Kankariya_Football.jpg";
 
 export function Services() {
   return (
@@ -82,7 +83,7 @@ function Cart() {
         style={{ width: "50%", backgroundColor: "#a48484" }}
       >
         <h1>Cart = {cart}</h1>
-        {/* <img src="../assets/Kankariya_Football.jpg" alt="Cart" /> */}
+        <img src={Product} alt="Cart" height="150px" />
         <h1>Quantity : {quantity}</h1>
         <button
           onClick={() => {
