@@ -1,5 +1,6 @@
 import "./Login.css";
 import { useState } from "react";
+import User from "./User";
 // import key from "./Authentication";
 // import submitData from "./Authentication";
 
@@ -17,6 +18,7 @@ export default function Login() {
   return (
     <>
       <div className="box-cont">
+        <UserProps />
         <div class="login-box">
           <h2 style={{ color: "green", textDecoration: "underline" }}>Login</h2>
 
@@ -34,6 +36,18 @@ export default function Login() {
           </form>
         </div>
       </div>
+    </>
+  );
+}
+
+export function UserProps() {
+  return (
+    <>
+      <User
+        name="Maulik"
+        age={21}
+        hobbies={["reading", "writing", "singing"]}
+      />
     </>
   );
 }
