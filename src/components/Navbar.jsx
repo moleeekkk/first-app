@@ -1,13 +1,17 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
+import { LoginDetail } from "../pages/Login";
 
 export default function Navbar() {
   return (
-    <nav className="navbar">
-      <Logo />
-      <Navigation />
-    </nav>
+    <>
+      <nav className="navbar">
+        <Logo />
+        <Navigation />
+      </nav>
+      <LoginDetail />
+    </>
   );
 }
 

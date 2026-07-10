@@ -12,7 +12,7 @@
 // }
 
 //2. Letest
-export default function User({ name, age, hobbies }) {
+export default function User({ name, age = 18, hobbies }) {
   return (
     <>
       <h1>User Page</h1>

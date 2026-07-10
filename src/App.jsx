@@ -8,8 +8,12 @@ import { Services } from "./pages/Sevices";
 import { Project } from "./pages/Project";
 import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
+import { useState } from "react";
 
 function App() {
+  const [Username, setUsername] = useState("");
+  const [Temp, setTemp] = useState("");
+
   return (
     <>
       <Navbar />
@@ -20,7 +24,17 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              Temp={Temp}
+              setTemp={setTemp}
+              Username={Username}
+              setUsername={setUsername}
+            />
+          }
+        />
       </Routes>
 
       <Footer />
