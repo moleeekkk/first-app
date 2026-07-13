@@ -9,6 +9,7 @@ import { Project } from "./pages/Project";
 import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
 import { useState } from "react";
+import Registration from "./pages/Registration";
 
 function App() {
   const [Username, setUsername] = useState("");
@@ -35,6 +36,7 @@ function App() {
             />
           }
         />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
 
       <Footer />

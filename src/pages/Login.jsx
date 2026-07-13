@@ -1,6 +1,7 @@
 import "./Login.css";
 // import { useState } from "react";
 import User from "./User";
+import { Link } from "react-router-dom";
 
 // const [Temp, setTemp] = useState("");
 
@@ -40,6 +41,7 @@ export default function Login({ Temp, setTemp, Username, setUsername }) {
             </button>
             {/* <span>Is Logged In : {loginStatus}</span> */}
           </form>
+          <Link to="/registration">Registration Here!</Link>
         </div>
       </div>
     </>

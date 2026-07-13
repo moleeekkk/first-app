@@ -396,16 +396,17 @@ function handleClick() {
 
 ---
 
-## 📅 Notes (13/07/2026)
+> > > **13/07/2026**
 
-# Controlled and Uncontrolled Components
+# 🎯 Controlled and Uncontrolled Components
 
-React forms can be managed using **Controlled Components** or **Uncontrolled Components**. The difference lies in **where the form data is stored and managed**.
+In React, form inputs can be managed using **Controlled Components** or **Uncontrolled Components**. The difference between them depends on **where the form data is stored and managed**.
 
 ### Controlled Component
 
-- Form data is managed by **React State** using `useState()`.
-- React becomes the **single source of truth**.
+- Form data is stored and managed using **React State (`useState`)**.
+- React State acts as the **single source of truth**.
+- The input value is controlled by React, making it easier to validate, update, and manage form data.
 - Recommended approach for most React applications.
 
 ```jsx
@@ -416,12 +417,11 @@ const [name, setName] = useState("");
 
 ### Uncontrolled Component
 
-- Form data is managed by the **DOM**, not React State.
-- Data is accessed using **Refs**.
+- Form data is stored in the **DOM**, not in React State.
+- Data is accessed using **`useRef()`**.
+- Useful for simple forms, file inputs, or when working with existing HTML forms.
 
 ```jsx
-import { useRef } from "react";
-
 const inputRef = useRef();
 
 <input type="text" ref={inputRef} />;
@@ -429,12 +429,25 @@ const inputRef = useRef();
 
 ### Quick Comparison
 
-| Controlled                    | Uncontrolled                             |
-| ----------------------------- | ---------------------------------------- |
-| Uses `useState()`             | Uses `useRef()`                          |
-| Data stored in React State    | Data stored in the DOM                   |
-| Easier validation and control | Simpler for basic forms                  |
-| Recommended for most cases    | Useful for simple or existing HTML forms |
+| Controlled Component                | Uncontrolled Component |
+| ----------------------------------- | ---------------------- |
+| Uses `useState()`                   | Uses `useRef()`        |
+| Data stored in React State          | Data stored in the DOM |
+| React controls the input            | DOM controls the input |
+| Easier validation and form handling | Best for simple forms  |
+| Recommended approach                | Used in specific cases |
+
+---
+
+# 🪝 Hooks in React
+
+**Hooks** are special functions that allow functional components to use React features such as state, references, and lifecycle methods without writing class components.
+
+### Common React Hooks
+
+- **`useState()`** → Used to create and manage state (component memory).
+- **`useRef()`** → Used to reference DOM elements or store mutable values without re-rendering the component.
+- **`useEffect()`** → Used to perform side effects such as API calls, timers, event listeners, or updating the document title after a component renders.
 
 ---
 
@@ -485,6 +498,18 @@ const inputRef = useRef();
 
 - ✅ **React Philosophy:**  
   React follows a **declarative** approach, where developers describe **what the UI should look like** based on the current state, and React efficiently updates only the necessary parts of the DOM whenever the data changes.
+
+- ✅ **React Hooks:**  
+  Hooks are built-in React functions that allow functional components to use features like state, references, and lifecycle methods without writing class components. They make React code cleaner, more reusable, and easier to maintain.
+
+- ✅ **`useState()` Hook:**  
+  The `useState()` Hook is used to create and manage **state (component memory)**. Whenever the state changes, React automatically re-renders the component to display the updated UI.
+
+- ✅ **`useRef()` Hook:**  
+  The `useRef()` Hook is used to access **DOM elements directly** or store mutable values that persist between renders without triggering a component re-render. It is commonly used for uncontrolled components and managing input focus.
+
+- ✅ **`useEffect()` Hook:**  
+  The `useEffect()` Hook is used to perform **side effects** after a component renders, such as fetching data from APIs, setting timers, adding event listeners, or updating the document title.
 
 ---
 
