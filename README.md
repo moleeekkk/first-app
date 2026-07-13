@@ -365,6 +365,81 @@ React Example:
 
 ---
 
+---
+
+# 🎯 Event Handling
+
+Event handling allows React components to respond to user actions like clicks, typing, form submissions, and mouse events.
+
+### Common Events
+
+- `onClick`
+- `onChange`
+- `onSubmit`
+- `onKeyDown`
+- `onKeyUp`
+- `onMouseEnter`
+- `onMouseLeave`
+- `onDoubleClick`
+- `onFocus`
+- `onBlur`
+
+### Example
+
+```jsx
+function handleClick() {
+  alert("Button Clicked!");
+}
+
+<button onClick={handleClick}>Click Me</button>;
+```
+
+> **Note:** Pass the function reference (`handleClick`), not the function call (`handleClick()`).
+
+---
+
+## 📅 Notes (13/07/2026)
+
+# Controlled and Uncontrolled Components
+
+React forms can be managed using **Controlled Components** or **Uncontrolled Components**. The difference lies in **where the form data is stored and managed**.
+
+### Controlled Component
+
+- Form data is managed by **React State** using `useState()`.
+- React becomes the **single source of truth**.
+- Recommended approach for most React applications.
+
+```jsx
+const [name, setName] = useState("");
+
+<input type="text" value={name} onChange={(e) => setName(e.target.value)} />;
+```
+
+### Uncontrolled Component
+
+- Form data is managed by the **DOM**, not React State.
+- Data is accessed using **Refs**.
+
+```jsx
+import { useRef } from "react";
+
+const inputRef = useRef();
+
+<input type="text" ref={inputRef} />;
+```
+
+### Quick Comparison
+
+| Controlled                    | Uncontrolled                             |
+| ----------------------------- | ---------------------------------------- |
+| Uses `useState()`             | Uses `useRef()`                          |
+| Data stored in React State    | Data stored in the DOM                   |
+| Easier validation and control | Simpler for basic forms                  |
+| Recommended for most cases    | Useful for simple or existing HTML forms |
+
+---
+
 # 📚 Quick Summary
 
 - ✅ React is component-based.

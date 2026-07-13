@@ -20,7 +20,7 @@ export default function Login({ Temp, setTemp, Username, setUsername }) {
         {/* <UserProps /> */}
         {/* <h3>Welcome {Username ? Username : "Guest"}</h3> */}
         <LoginDetail Username={Username} />
-        <div class="login-box">
+        <div className="login-box">
           <h2 style={{ color: "green", textDecoration: "underline" }}>Login</h2>
 
           <form>
