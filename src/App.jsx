@@ -10,6 +10,7 @@ import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
 import { useState } from "react";
 import Registration from "./pages/Registration";
+import Looping from "./pages/Looping";
 
 function App() {
   const [Username, setUsername] = useState("");
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+      <Looping />
       <Navbar />
 
       <Routes>

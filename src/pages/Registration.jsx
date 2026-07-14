@@ -16,8 +16,8 @@ export default function Registration() {
     e.preventDefault();
 
     setFinalName(Name);
-    setFinalAge(Age);
-    setFinalEmail(Email);
+    setFinalAge(Age.current.value);
+    setFinalEmail(Email.current.value);
     setFinalPassword(Password);
 
     alert("Form Submitted...");
@@ -36,7 +36,7 @@ export default function Registration() {
             value={Name}
             onChange={(e) => {
               setName(e.target.value);
-              console.log(e.target.value);
+              // console.log(e.target.value);
             }}
           />
           <input type="number" placeholder="Age" min="1" ref={Age} />
@@ -47,7 +47,7 @@ export default function Registration() {
             value={Password}
             onChange={(e) => {
               setPassword(e.target.value);
-              console.log(e.target.value);
+              // console.log(e.target.value);
             }}
           />
           <input type="password" placeholder="Confirm Password" />
