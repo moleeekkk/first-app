@@ -451,6 +451,132 @@ const inputRef = useRef();
 
 ---
 
+# 📅 Notes (14/07/2026)
+
+# 🔁 Looping using `map()`
+
+In React, the **`map()`** method is the most common way to display a list of data. It loops through each element of an array and returns a new JSX element for every item. This allows you to dynamically render lists without writing repetitive code.
+
+---
+
+## Why use `map()`?
+
+- Converts each element of an array into a JSX element.
+- Makes the UI dynamic by rendering data automatically.
+- Keeps the code clean, reusable, and easy to maintain.
+- Commonly used to display lists, menus, tables, cards, and products.
+
+---
+
+## Syntax
+
+```jsx
+array.map((element, index) => <JSX key={index}>{element}</JSX>);
+```
+
+> **Note:** Every element returned by `map()` should have a unique **`key`** prop. React uses the `key` to identify which items have changed, been added, or removed, improving rendering performance.
+
+---
+
+# 📌 Looping Through an Array
+
+### Example
+
+```jsx
+const fruits = ["Apple", "Banana", "Mango", "Orange"];
+
+function App() {
+  return (
+    <ol>
+      {fruits.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </ol>
+  );
+}
+```
+
+### Output
+
+```text
+1. Apple
+2. Banana
+3. Mango
+4. Orange
+```
+
+---
+
+# 📌 Looping Through an Array of Objects
+
+When working with objects, you can access each object's properties inside the `map()` function.
+
+### Example
+
+```jsx
+const students = [
+  { id: 1, name: "Maulik", age: 21 },
+  { id: 2, name: "Rahul", age: 22 },
+  { id: 3, name: "Priya", age: 20 },
+];
+```
+
+### Display as a Table
+
+```jsx
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {students.map((student) => (
+      <tr key={student.id}>
+        <td>{student.id}</td>
+        <td>{student.name}</td>
+        <td>{student.age}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+```
+
+---
+
+# 💡 Using a Unique `key`
+
+React requires every item rendered using `map()` to have a **unique `key`**.
+
+✅ Recommended
+
+```jsx
+<tr key={student.id}>
+```
+
+⚠️ Avoid using the array index as a key when the list can change (items are added, removed, or reordered).
+
+```jsx
+<li key={index}>{fruit}</li>
+```
+
+Using a unique ID helps React update the UI more efficiently.
+
+---
+
+# 📝 Important Notes
+
+- `map()` works only with **arrays**.
+- It returns a **new array** without modifying the original array.
+- Every JSX element returned by `map()` should have a **unique `key`**.
+- `map()` is commonly used to render lists, tables, cards, and menus dynamically.
+- Prefer using a unique ID as the `key` instead of the array index whenever possible.
+
+---
+
 # 📚 React Quick Summary
 
 - ✅ **React is a Component-Based Library:**  
