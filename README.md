@@ -577,6 +577,237 @@ Using a unique ID helps React update the UI more efficiently.
 
 ---
 
+# 📅 Notes (15/07/2026)
+
+# 🔍 `filter()` Method
+
+The **`filter()`** method is used to create a new array by selecting only the elements that satisfy a given condition. Unlike `map()`, which transforms every element, `filter()` only returns the elements for which the condition is `true`.
+
+---
+
+## Why use `filter()`?
+
+- Filters data based on a condition.
+- Returns a new array without modifying the original array.
+- Commonly used for search functionality, displaying active users, filtering products, and removing items.
+
+---
+
+## Syntax
+
+```jsx
+array.filter((element) => condition);
+```
+
+---
+
+## Example
+
+```jsx
+const numbers = [10, 15, 20, 25, 30];
+
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+console.log(evenNumbers);
+```
+
+### Output
+
+```text
+[10, 20, 30]
+```
+
+---
+
+## Example with Array of Objects
+
+```jsx
+const students = [
+  { id: 1, name: "Maulik", age: 21 },
+  { id: 2, name: "Rahul", age: 18 },
+  { id: 3, name: "Priya", age: 22 },
+];
+
+const adults = students.filter((student) => student.age >= 21);
+
+console.log(adults);
+```
+
+---
+
+## Important Notes
+
+- Works only with arrays.
+- Returns a **new array**.
+- Does not modify the original array.
+- Returns only the elements that satisfy the condition.
+
+---
+
+# ⚡ `useMemo()`
+
+`useMemo()` is a React Hook used to **memoize (remember) the result of a calculation**. It prevents expensive computations from running on every render and recalculates the value only when one of its dependencies changes.
+
+---
+
+## Why use `useMemo()`?
+
+- Improves application performance.
+- Prevents unnecessary calculations on every render.
+- Useful when working with expensive computations, filtering, sorting, or large datasets.
+
+---
+
+## Syntax
+
+```jsx
+import { useMemo } from "react";
+
+const memoizedValue = useMemo(() => {
+  return calculation;
+}, [dependencies]);
+```
+
+> **Dependency Array:**  
+> React recalculates the memoized value **only when one of the dependencies changes**. If none of the dependencies change, React returns the previously stored value.
+
+---
+
+## Example
+
+```jsx
+import { useMemo, useState } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const square = useMemo(() => {
+    console.log("Calculating...");
+    return count * count;
+  }, [count]);
+
+  return (
+    <>
+      <h2>Square: {square}</h2>
+
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </>
+  );
+}
+```
+
+---
+
+## Important Notes
+
+- Used for **performance optimization**.
+- Stores the result of a calculation.
+- Recalculates only when dependencies change.
+- Should not be used for every calculation—only expensive ones.
+
+---
+
+# 🔄 `useEffect()`
+
+`useEffect()` is a React Hook used to perform **side effects** after a component renders. Side effects are operations that interact with the outside world, such as fetching data, setting timers, adding event listeners, or updating the document title.
+
+---
+
+## Why use `useEffect()`?
+
+- Fetch data from APIs.
+- Set or clear timers.
+- Add or remove event listeners.
+- Update the document title.
+- Perform actions after rendering.
+
+---
+
+## Syntax
+
+```jsx
+import { useEffect } from "react";
+
+useEffect(() => {
+  // Side Effect
+
+  return () => {
+    // Cleanup Code (Optional)
+  };
+}, [dependencies]);
+```
+
+---
+
+## Example
+
+```jsx
+import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    document.title = "React App";
+  }, []);
+
+  return <h1>Hello React</h1>;
+}
+```
+
+---
+
+## Dependency Array
+
+### Run only once (on component mount)
+
+```jsx
+useEffect(() => {
+  console.log("Runs once");
+}, []);
+```
+
+### Run whenever a dependency changes
+
+```jsx
+useEffect(() => {
+  console.log("Count changed");
+}, [count]);
+```
+
+### Run after every render
+
+```jsx
+useEffect(() => {
+  console.log("Runs after every render");
+});
+```
+
+---
+
+## Cleanup Function
+
+A cleanup function is used to remove side effects such as timers or event listeners when the component is unmounted.
+
+```jsx
+useEffect(() => {
+  const timer = setInterval(() => {
+    console.log("Running...");
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, []);
+```
+
+---
+
+## Important Notes
+
+- Runs after the component renders.
+- Used for handling side effects.
+- The dependency array controls when the effect runs.
+- Cleanup functions help prevent memory leaks.
+
+---
+
 # 📚 React Quick Summary
 
 - ✅ **React is a Component-Based Library:**  
@@ -636,6 +867,18 @@ Using a unique ID helps React update the UI more efficiently.
 
 - ✅ **`useEffect()` Hook:**  
   The `useEffect()` Hook is used to perform **side effects** after a component renders, such as fetching data from APIs, setting timers, adding event listeners, or updating the document title.
+
+- ✅ **`filter()` Method:**  
+  The `filter()` method is used to create a new array by selecting only the elements that satisfy a given condition. It does not modify the original array and is commonly used for search functionality, filtering products, active users, or any condition-based data.
+
+- ✅ **`useMemo()` Hook:**  
+  The `useMemo()` Hook is used to **memoize the result of an expensive calculation**, improving performance by preventing unnecessary recalculations. React recomputes the value only when one of the dependencies in the dependency array changes.
+
+- ✅ **Dependency Array in `useMemo()`:**  
+  The dependency array tells React **when to recalculate** the memoized value. If the dependencies remain unchanged, React returns the previously stored result instead of executing the calculation again.
+
+- ✅ **`useEffect()` Hook:**  
+  The `useEffect()` Hook is used to perform **side effects** after a component renders, such as fetching data from an API, setting timers, adding event listeners, or updating the document title. The dependency array controls when the effect should run, and a cleanup function can be used to prevent memory leaks.
 
 ---
 
