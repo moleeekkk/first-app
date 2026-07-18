@@ -2,6 +2,7 @@ import "./Login.css";
 // import { useState } from "react";
 import User from "./User";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 // const [Temp, setTemp] = useState("");
 
@@ -36,9 +37,9 @@ export default function Login({ Temp, setTemp, Username, setUsername }) {
             <label>Password</label>
             <input type="password" placeholder="Enter Password" />
 
-            <button type="button" onClick={submitData}>
+            <Button variant="success" type="button" onClick={submitData}>
               Login
-            </button>
+            </Button>
             {/* <span>Is Logged In : {loginStatus}</span> */}
           </form>
           <Link to="/registration">Registration Here!</Link>

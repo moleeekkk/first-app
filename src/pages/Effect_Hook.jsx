@@ -1,21 +1,51 @@
 import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
 
 export default function Effect_Hook() {
   const [count, setcount] = useState(0);
   const [stock, setstock] = useState(20);
 
-  function display() {
-    console.log("Display()");
+  function mount() {
+    console.log("Mount phase");
   }
 
+  function unmount() {
+    console.log("Unmount phase");
+  }
+
+  //when component is mounting
   useEffect(() => {
-    display();
-  }, [count]);
+    mount();
+  }, []);
+
+  //when component is unmounting
+  useEffect(() => {
+    return () => {
+      unmount();
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   display();
+  // }, [count]);
   return (
     <>
-      <button onClick={() => setcount(count + 1)}>{count}</button>
-      <button onClick={() => setstock(stock - 1)}>Stock</button>
-      <p>Stock : {stock}</p>
+      <Button
+        variant="primary"
+        onClick={() => {
+          setcount(count + 1);
+        }}
+      >
+        {count}
+      </Button>
+      <Button
+        variant="secondary"
+        onClick={() => {
+          setstock(stock - 1);
+        }}
+      >
+        {stock}
+      </Button>
     </>
   );
 }
