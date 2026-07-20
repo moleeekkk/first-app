@@ -808,6 +808,194 @@ useEffect(() => {
 
 ---
 
+# 📅 Notes (17/07/2026)
+
+# 🔄 Component Lifecycle
+
+Every React component goes through a series of stages during its lifetime. These stages are known as the **Component Lifecycle**. Understanding the lifecycle helps developers perform actions at the right time, such as fetching data, updating the UI, or cleaning up resources.
+
+---
+
+## 1️⃣ Mounting
+
+**Mounting** is the first phase of a component's lifecycle. It occurs when the component is created and inserted into the DOM for the first time.
+
+During this phase, React:
+
+- Initializes the component.
+- Sets the initial state using `useState()`.
+- Renders the component on the screen.
+- Executes `useEffect()` with an empty dependency array (`[]`) after the first render.
+
+### Example
+
+```jsx
+useEffect(() => {
+  console.log("Component Mounted");
+}, []);
+```
+
+---
+
+## 2️⃣ Updating
+
+The **Updating** phase occurs whenever the component needs to re-render because its data has changed.
+
+A component updates when:
+
+- Props change.
+- State (`useState`) changes.
+- Parent component re-renders.
+- `forceUpdate()` is called (Class Components).
+
+During this phase, React updates only the parts of the UI that have changed.
+
+### Example
+
+```jsx
+useEffect(() => {
+  console.log("Count Updated");
+}, [count]);
+```
+
+---
+
+## 3️⃣ Unmounting
+
+**Unmounting** is the final phase of a component's lifecycle. It occurs when the component is removed from the DOM.
+
+During this phase, cleanup tasks should be performed, such as:
+
+- Clearing timers.
+- Removing event listeners.
+- Canceling API requests.
+- Closing WebSocket connections.
+
+### Example
+
+```jsx
+useEffect(() => {
+  const timer = setInterval(() => {
+    console.log("Running...");
+  }, 1000);
+
+  return () => {
+    clearInterval(timer);
+    console.log("Component Unmounted");
+  };
+}, []);
+```
+
+---
+
+## Lifecycle Using `useEffect()`
+
+| Lifecycle Phase | `useEffect()`                          |
+| --------------- | -------------------------------------- |
+| Mounting        | `useEffect(() => {}, [])`              |
+| Updating        | `useEffect(() => {}, [dependency])`    |
+| Unmounting      | `return () => {}` inside `useEffect()` |
+
+---
+
+# 🌟 Keeping Components Pure
+
+A **Pure Component** is a component that always produces the same output for the same input (Props and State). It does not modify external variables or produce side effects during rendering.
+
+Keeping components pure makes them:
+
+- Easier to understand.
+- Easier to test.
+- More reusable.
+- More predictable.
+
+---
+
+## Rules for Keeping Components Pure
+
+- Do not modify props directly.
+- Do not change variables outside the component.
+- Always return the same UI for the same props and state.
+- Perform side effects inside `useEffect()`, not during rendering.
+
+### Pure Component Example
+
+```jsx
+function Welcome({ name }) {
+  return <h1>Hello, {name}</h1>;
+}
+```
+
+The component always returns the same output for the same `name` prop.
+
+---
+
+# 🎨 React Bootstrap
+
+**React Bootstrap** is a popular UI library that provides ready-made Bootstrap components for React applications. Instead of writing Bootstrap classes manually, React Bootstrap offers reusable React components.
+
+---
+
+## Why use React Bootstrap?
+
+- Faster UI development.
+- Responsive design.
+- Clean and reusable components.
+- Easy integration with React.
+- Less custom CSS required.
+
+---
+
+## Installation
+
+```bash
+npm install react-bootstrap bootstrap
+```
+
+Import Bootstrap CSS:
+
+```jsx
+import "bootstrap/dist/css/bootstrap.min.css";
+```
+
+---
+
+## Example
+
+```jsx
+import Button from "react-bootstrap/Button";
+
+function App() {
+  return <Button variant="primary">Click Me</Button>;
+}
+```
+
+---
+
+## Common React Bootstrap Components
+
+- `Button`
+- `Navbar`
+- `Card`
+- `Form`
+- `Modal`
+- `Alert`
+- `Table`
+- `Container`
+- `Row`
+- `Col`
+
+---
+
+## Important Notes
+
+- React Bootstrap is built on top of Bootstrap.
+- Components are fully responsive.
+- Uses React components instead of HTML classes.
+- Helps create professional-looking UIs with minimal effort.
+
+---
+
 # 📚 React Quick Summary
 
 - ✅ **React is a Component-Based Library:**  
@@ -879,6 +1067,18 @@ useEffect(() => {
 
 - ✅ **`useEffect()` Hook:**  
   The `useEffect()` Hook is used to perform **side effects** after a component renders, such as fetching data from an API, setting timers, adding event listeners, or updating the document title. The dependency array controls when the effect should run, and a cleanup function can be used to prevent memory leaks.
+
+- ✅ **Component Lifecycle:**  
+  Every React component goes through three lifecycle phases: **Mounting**, **Updating**, and **Unmounting**. These phases determine when a component is created, re-rendered, and removed from the DOM, allowing developers to perform actions at the appropriate stage.
+
+- ✅ **Mounting, Updating, and Unmounting:**  
+  During **Mounting**, the component is created, initialized, and rendered for the first time. **Updating** occurs whenever props or state change, causing the component to re-render. **Unmounting** happens when the component is removed from the DOM, where cleanup tasks such as clearing timers and removing event listeners should be performed.
+
+- ✅ **Keeping Components Pure:**  
+  A pure component always returns the same UI for the same props and state without modifying external data or causing side effects during rendering. Keeping components pure makes applications more predictable, reusable, easier to test, and simpler to maintain.
+
+- ✅ **React Bootstrap:**  
+  React Bootstrap is a UI component library that combines the power of React with Bootstrap's responsive design. It provides pre-built, reusable components like Buttons, Forms, Cards, and Navbars, allowing developers to build professional and responsive user interfaces with less code.
 
 ---
 
