@@ -10,8 +10,9 @@ import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
 import { useState } from "react";
 import Registration from "./pages/Registration";
+import Tailwind from "./pages/Tailwind";
 // import Looping from "./pages/Looping";
-import Effect_Hook from "./pages/Effect_Hook";
+// import Effect_Hook from "./pages/Effect_Hook";
 
 function App() {
   const [Username, setUsername] = useState("");
@@ -19,7 +20,8 @@ function App() {
 
   return (
     <>
-      <Effect_Hook />
+      <Tailwind />
+      {/* <Effect_Hook /> */}
       {/* <Looping /> */}
       <Navbar />
 
