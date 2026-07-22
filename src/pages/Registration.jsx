@@ -12,6 +12,8 @@ export default function Registration() {
   const [FinalEmail, setFinalEmail] = useState(null);
   const [FinalPassword, setFinalPassword] = useState(null);
 
+  const [User, setUser] = useState("");
+
   function handle(e) {
     e.preventDefault();
 
@@ -20,6 +22,9 @@ export default function Registration() {
     setFinalEmail(Email.current.value);
     setFinalPassword(Password);
 
+    const Data = { FinalName, FinalAge, FinalEmail, FinalPassword };
+
+    setUser(Data);
     alert("Form Submitted...");
     // alert("Name : " + Fullname);
     // alert("Age : " + ageRef.current.value);

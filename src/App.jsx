@@ -10,7 +10,7 @@ import { Contact } from "./pages/Contact";
 import Login from "./pages/Login";
 import { useState } from "react";
 import Registration from "./pages/Registration";
-import Tailwind from "./pages/Tailwind";
+// import Tailwind from "./pages/Tailwind";
 // import Looping from "./pages/Looping";
 // import Effect_Hook from "./pages/Effect_Hook";
 
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Tailwind />
+      {/* <Tailwind /> */}
       {/* <Effect_Hook /> */}
       {/* <Looping /> */}
       <Navbar />
